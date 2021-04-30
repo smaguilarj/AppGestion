@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VentasGpo.Views.Templates.CustomTitleModal"
+             HeightRequest="40" IsClippedToBounds="True" Orientation="Horizontal"
+             BackgroundColor="{StaticResource ColorBlack}" Margin="0,0,0,-6" Padding="0,20, 0, 3">
+    <Image Source="backImage.png" Aspect="AspectFit" WidthRequest="50" HeightRequest="20" VerticalOptions="Center" HorizontalOptions="Center">
+        <Image.GestureRecognizers>
+            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ReturnCommand}"/>
+        </Image.GestureRecognizers>
+    </Image>
+    <Image Source="logo_GPh.png" HorizontalOptions="CenterAndExpand" WidthRequest="40" Margin="-55,0,0,0"/>
+</StackLayout>

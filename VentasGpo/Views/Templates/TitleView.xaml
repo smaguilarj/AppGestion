@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VentasGpo.Views.Templates.TitleView">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" >
+            <Image Source="logo_GPh.png" HorizontalOptions="CenterAndExpand"
+                   WidthRequest="40" HeightRequest="40" >
+                <Image.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="-70, 0, 0, 0" />
+                        <On Platform="iOS" Value="-35, 0, 0, 0" />
+                    </OnPlatform>
+                </Image.Margin>
+            </Image>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

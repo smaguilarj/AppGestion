@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VentasGpo.Views.Menu.Ventas.RTVentas"
+             Style="{DynamicResource BarNavigation}"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:control="clr-namespace:VentasGpo.Helpers"
+             xmlns:coco="clr-namespace:VentasGpo.Views.Templates"
+             xmlns:choco="clr-namespace:VentasGpo.Views.Menu.Ventas.Templates"
+             xmlns:views="clr-namespace:VentasGpo.Views.Menu.Ventas">
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="White">
+                <!-- BAR NAVIGATION -->
+                <coco:CustomTitleModal x:Name="TitleModal" />
+
+                
+                    <ScrollView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="160" /> 
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="300" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Filtros regiones -->
+                            <StackLayout Grid.Row="0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="15"
+                                                 VerticalOptions="EndAndExpand" Margin="0,0,0,-20">
+                                        <Label Text="{Binding Title}" Style="{StaticResource Title}" TextColor="{StaticResource ColorGreyDark}" />
+                                        <StackLayout Margin="-10, 5, 0, 0" Orientation="Horizontal" HorizontalOptions="EndAndExpand"
+                                                     VerticalOptions="CenterAndExpand" IsVisible="{Binding IsSucursal}" >
+                                            <Label Text="COMPS" FontSize="12" />   
+                                            <Switch OnColor="Black" IsToggled="{Binding IsComp}" Toggled="Switch_Toggled" />   
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal" Padding="15">
+                                        <Label Text="{Binding LugarFirst}" />
+                                        <Label Text="{Binding LugarSecond}" Style="{StaticResource secondaryText}" VerticalTextAlignment="Center"/>
+                                        <Frame x:Name="Lupa" BorderColor="{StaticResource ColorGreyLight}"
+                                           CornerRadius="6" HorizontalOptions="EndAndExpand"
+                                           Padding="1" Margin="0" WidthRequest="30">
+                                            <ffimage:CachedImage Source="lupa.png" Margin="5" Aspect="AspectFit" WidthRequest="10" HeightRequest="10" />
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="FindSucursal_Tapped" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Orientation="Horizontal" Margin="10,-10,10,0" MinimumHeightRequest="62"
+                                                 HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <choco:FilterPlace x:Name="Filtro" Filtro="{Binding FilterButtons}"  />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <!-- Graficas -->
+                            <StackLayout Grid.Row="1" Padding="10" Margin="0,0,0,-5">
+                                <Frame BorderColor="{StaticResource ColorGreyLight}"
+                                       CornerRadius="12"
+                                       Padding="5">
+                                    <StackLayout>
+                                        <Label Text="{Binding LugarThird}" />
+                                        <Grid IsVisible="{Binding IsGraphic}" >
+                                            <control:ChartView Chart="{Binding ChartBar}" HeightRequest="210" />
+                                            <control:ChartView Chart="{Binding ChartLine}" HeightRequest="210" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+                            <!-- Resumen y filtro categorías -->
+                            <StackLayout Grid.Row="2" VerticalOptions="StartAndExpand">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="8*" />
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0" HorizontalOptions="StartAndExpand">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="7*" />
+                                                <ColumnDefinition Width="3*" />
+                                            </Grid.ColumnDefinitions>
+                                            <control:RoundedFrame Grid.Column="0"
+                                                   x:Name="BackLeyenda"
+                                                   CornerRadius="16,0,0,16"
+                                                   Padding="10"
+                                                   WidthRequest="220"
+                                                   VerticalOptions="CenterAndExpand">
+                                                <Label HorizontalTextAlignment="End" Text="{Binding Leyenda}" TextColor="White" />
+                                            </control:RoundedFrame>
+                                            <Frame Grid.Column="1"
+                                                   CornerRadius="12"
+                                                   Margin="0,0,10,0"
+                                                   Padding="10"
+                                                   BorderColor="{StaticResource ColorGreyLight}"
+                                                   VerticalOptions="CenterAndExpand">
+                                                <Label Text="{Binding Porcentaje, StringFormat='{0}%'}" TextColor="{Binding PorcentajeColor}" />
+                                            </Frame>
+                                        </Grid>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand" Margin="5,0"
+                                                 HorizontalOptions="CenterAndExpand">
+
+                                        <StackLayout Padding="10">
+                                            <Label Text="Categorías" />
+                                        </StackLayout>
+
+                                        <Grid Padding="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Column="0" >
+                                                <Grid>
+                                                    <control:Circle x:Name="Ventas" Size="76" >
+                                                        <control:Circle.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureVentas" />
+                                                        </control:Circle.GestureRecognizers>
+                                                    </control:Circle>
+                                                    <ffimage:CachedImage Source="ventas2.png" Aspect="AspectFit" WidthRequest="20" HeightRequest="20" >
+                                                        <ffimage:CachedImage.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureVentas" />
+                                                        </ffimage:CachedImage.GestureRecognizers>
+                                                    </ffimage:CachedImage>
+                                                </Grid>
+                                                <Label Text="Ventas" HorizontalTextAlignment="Center" FontSize="14" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1" >
+                                                <Grid>
+                                                    <control:Circle x:Name="Visitas" Size="76" >
+                                                        <control:Circle.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureVisitas" />
+                                                        </control:Circle.GestureRecognizers>
+                                                    </control:Circle>
+                                                    <ffimage:CachedImage Source="visitas.png" Aspect="AspectFit" Margin="15" WidthRequest="30" HeightRequest="30" >
+                                                        <ffimage:CachedImage.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureVisitas" />
+                                                        </ffimage:CachedImage.GestureRecognizers>
+                                                    </ffimage:CachedImage>
+                                                </Grid>
+                                                <Label Text="Visitas" HorizontalTextAlignment="Center" FontSize="14" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="2">
+                                                <Grid>
+                                                    <control:Circle x:Name="Tickets" Size="76" >
+                                                        <control:Circle.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureTickets" />
+                                                        </control:Circle.GestureRecognizers>
+                                                    </control:Circle>
+                                                    <ffimage:CachedImage Source="ticket.png" Aspect="AspectFit" Margin="10" WidthRequest="30" HeightRequest="30" >
+                                                        <ffimage:CachedImage.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureTickets" />
+                                                        </ffimage:CachedImage.GestureRecognizers>
+                                                    </ffimage:CachedImage>
+                                                </Grid>
+                                                <Label Text="Tickets" HorizontalTextAlignment="Center" FontSize="14" />
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="3">
+                                                <Grid>
+                                                    <control:Circle x:Name="Pptos" Size="76" >
+                                                        <control:Circle.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGesturePresupuesto" />
+                                                        </control:Circle.GestureRecognizers>
+                                                    </control:Circle>
+                                                    <ffimage:CachedImage Source="ppto.png" Aspect="AspectFit" Margin="15" WidthRequest="5" HeightRequest="5" >
+                                                        <ffimage:CachedImage.GestureRecognizers>
+                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGesturePresupuesto" />
+                                                        </ffimage:CachedImage.GestureRecognizers>
+                                                    </ffimage:CachedImage>
+                                                </Grid>
+                                                <Label Text="Ppto" HorizontalTextAlignment="Center" FontSize="14" />
+                                            </StackLayout>
+                                        </Grid>
+                               
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                        </Grid>
+                    </ScrollView>
+
+                
+            </StackLayout>
+
+            <!-- Details -->
+            <BoxView
+                x:Name="CartPopupFade"
+                BackgroundColor="#AA000000"
+                IsVisible="false"
+                Opacity="0">
+            </BoxView>
+            <views:CartDetails IsVisible="{Binding IsDetails}" x:Name="CartPopup" />
+
+            <Frame x:Name="frame" Style="{DynamicResource Loading}" IsVisible="{Binding IsBusy}">
+                <Image x:Name="Flor" Source="flor1.png" Aspect="AspectFit" WidthRequest="5" HeightRequest="5" >
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="150" />
+                            <On Platform="iOS" Value="170" />
+                        </OnPlatform>
+                    </Image.Margin>
+                </Image>
+                <!--<ActivityIndicator x:Name="activity" IsRunning="{Binding IsBusy}"
+                            IsVisible="{Binding IsBusy}" Style="{DynamicResource activityLoading}"/>-->
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

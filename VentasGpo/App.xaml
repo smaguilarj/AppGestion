@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:templates="clr-namespace:VentasGpo.Views.Templates"
+             mc:Ignorable="d" x:Class="VentasGpo.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Colors -->
+            <Color x:Key="ColorRed">#E25050</Color>
+            <Color x:Key="ColorBlack">#383838</Color>
+            <Color x:Key="ColorGreyDark">#9D9999</Color>
+            <Color x:Key="ColorGreyLight">#CBCAC8</Color>
+            <Color x:Key="ColorBlue">#009ACC</Color>
+
+            <Color x:Key="NutrisaLight">#F9BF66</Color>
+            <Color x:Key="NutrisaDark">#E48337</Color>
+
+            <Color x:Key="LavazzaLight">#32A3D9</Color>
+            <Color x:Key="LavazzaDark">#032A49</Color>
+
+            <Color x:Key="CielitoLight">#55D1E2</Color>
+            <Color x:Key="CielitoDark">#0072A0</Color>
+
+            <!-- Fonts -->
+            <OnPlatform x:TypeArguments="x:String" x:Key="PoppinsBold">
+                <On Platform="Android" Value="fonts/Poppins-SemiBold.ttf#PoppinsBold" />
+                <On Platform="iOS" Value="Poppins-SemiBold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="Poppins">
+                <On Platform="Android" Value="fonts/Poppins-Regular.otf#Poppins" />
+                <On Platform="iOS" Value="Poppins-Regular"/>
+            </OnPlatform>
+
+            <!-- NavigationPage -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{DynamicResource ColorBlack}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <templates:TitleView x:Key="CustomTitleView"/>
+            <Style x:Key="BarNavigation" TargetType="ContentPage">
+                <Setter Property="NavigationPage.TitleView" Value="{StaticResource CustomTitleView}" />
+            </Style>
+
+            <!-- Labels -->
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="labelBold" TargetType="Label" >
+                <Setter Property="FontFamily" Value="{DynamicResource PoppinsBold}" />
+            </Style>
+
+            <Style x:Key="secondaryText" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource ColorGreyDark}" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
+            <Style x:Key="titleBold" TargetType="Label" >
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontFamily" Value="{DynamicResource PoppinsBold}" />
+            </Style>
+
+            <Style x:Key="TitleMenu" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="17" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="Padding" Value="5" />
+            </Style>
+
+            <Style x:Key="underText" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontSize" Value="13" />
+            </Style>
+
+            <Style x:Key="PopUpTitle" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="{DynamicResource PoppinsBold}" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style x:Key="PopUpDescription" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="LineBreakMode" Value="WordWrap" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{DynamicResource ColorBlack}" />
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="secondarySpan" TargetType="Span">
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+                <Setter Property="TextColor" Value="{DynamicResource ColorGreyDark}" />
+                <Setter Property="FontSize" Value="14" />
+            </Style>
+
+            <!-- Frames -->
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style x:Key="MenuOptions" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="Margin" Value="8, 8" />
+            </Style>
+
+            <Style x:Key="Loading" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Black" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Opacity" Value="0.7" />
+            </Style>
+
+            <Style x:Key="PopUpFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Margin" Value="15" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+
+            <!-- Activity -->
+            <Style x:Key="activityLoading" TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="White" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+
+            <!-- Entry -->
+            <Style TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+            </Style>
+
+            <Style x:Key="entryBorder" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="Color" Value="White" />
+                <Setter Property="Margin">
+                    <OnPlatform x:TypeArguments="d:Thickness">
+                        <On Platform="Android" Value="5,-15,10,10" />
+                        <On Platform="iOS" Value="5,-5,10,10" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
+            <!-- Buttons -->
+            <Style x:Key="principalButton" TargetType="Button"> 
+                <Setter Property="BackgroundColor" Value="{DynamicResource ColorBlue}" />
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="15,10" />
+            </Style>
+
+            <Style x:Key="secundaryButton" TargetType="Button"> 
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+                <Setter Property="TextColor" Value="{DynamicResource ColorGreyDark}" />
+                <Setter Property="BorderColor" Value="{DynamicResource ColorGreyLight}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="15,10" />
+            </Style>
+
+            <Style x:Key="filterButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="FontFamily" Value="{DynamicResource Poppins}" />
+                <Setter Property="TextColor" Value="{DynamicResource ColorGreyDark}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="80" />
+                <Setter Property="BorderColor" Value="{DynamicResource ColorGreyLight}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

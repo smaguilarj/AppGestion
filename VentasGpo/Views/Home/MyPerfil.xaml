@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Style="{DynamicResource BarNavigation}"
+             xmlns:control="clr-namespace:VentasGpo.Helpers"
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="VentasGpo.Views.Home.MyPerfil">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2.5*" />
+                <RowDefinition Height="7.5*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" HorizontalOptions="CenterAndExpand"
+                         VerticalOptions="EndAndExpand">
+                <Label HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Nombre}" Style="{StaticResource labelBold}" />
+                            <Span Text="&#10;" />
+                            <Span Text="{Binding Puesto}" Style="{StaticResource secondarySpan}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Text="MÉXICO" HorizontalTextAlignment="Center" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="12">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Perfil de acceso" Style="{StaticResource labelBold}" />
+                            <Span Text="&#10;" />
+                            <Span Text="{Binding TipoPerfil}" Style="{StaticResource secondarySpan}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Frame BorderColor="{StaticResource ColorGreyLight}"
+                               CornerRadius="12"
+                               Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Congelado" />
+                        <StackLayout Grid.Column="1">
+                            <Grid >
+                                <control:Circle Size="76" BackgroundColor="{Binding ColorNutrisa}" />
+                                <ffimage:CachedImage Source="logoNut.png" Aspect="AspectFit" Margin="5" WidthRequest="10" HeightRequest="10" />                          
+                            </Grid>
+                            <Label Text="Nutrisa" HorizontalTextAlignment="Center" FontSize="14" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="2">
+                            <Grid >
+                                <control:Circle Size="76" BackgroundColor="{Binding ColorMoyo}" />
+                                <ffimage:CachedImage Source="moyo.png" Aspect="AspectFit" Margin="14" WidthRequest="10" HeightRequest="10" />                          
+                            </Grid>
+                            <Label Text="Moyo" HorizontalTextAlignment="Center" FontSize="14" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <Frame BorderColor="{StaticResource ColorGreyLight}"
+                               CornerRadius="12"
+                               Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="3*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="Cafetería" />
+                        <StackLayout Grid.Column="1">
+                            <Grid>
+                                <control:Circle Size="76" BackgroundColor="{Binding ColorLavazza}" />
+                                <ffimage:CachedImage Source="lavazza.png" Aspect="AspectFit" Margin="5" WidthRequest="10" HeightRequest="10" />                          
+                            </Grid>
+                            <Label Text="Lavazza" HorizontalTextAlignment="Center" FontSize="14" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="2">
+                            <Grid >
+                                <control:Circle Size="76" BackgroundColor="{Binding ColorCielito}" />
+                                <ffimage:CachedImage Source="cielito.png" Aspect="AspectFit" Margin="5" WidthRequest="10" HeightRequest="10" />                          
+                            </Grid>
+                            <Label Text="Cielito" HorizontalTextAlignment="Center" FontSize="14" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

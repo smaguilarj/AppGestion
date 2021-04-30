@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  x:Class="VentasGpo.Views.Index.MasterPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="=" Icon="hamburger.png">
+            <StackLayout BackgroundColor="White">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0" />
+                        <On Platform="iOS" Value="0, 20, 0, 0" />
+                    </OnPlatform>
+                </StackLayout.Padding>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand"
+                             VerticalOptions="EndAndExpand" Margin="5, 20">
+                    <Image Source="logo_GPh2.png" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                    <Label Margin="5, 20">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span x:Name="Nombre" Text="" />
+                                <Span Text="&#10;" />
+                                <Span x:Name="Puesto" Text="" Style="{StaticResource secondarySpan}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <StackLayout >
+                    <ListView x:Name="ListaDeMenu" ItemSelected="Menu_ItemSelected"
+                              SeparatorVisibility="None"
+                              BackgroundColor="White">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout BackgroundColor="{StaticResource ColorGreyLight}" Margin="0, 1" Padding="0">
+                                        <StackLayout Margin="10, 0, 0, 0" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                                            <Label Text="{Binding Titulo}" Style="{StaticResource secondaryText}"
+                                                   VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                                                   Margin="20, 0, 0, 0" FontSize="16" /> 
+                                        </StackLayout>                                              
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                    <Label x:Name="Version" Style="{StaticResource secondaryText}" />
+                </StackLayout>
+            </StackLayout> 
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

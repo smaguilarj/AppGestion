@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Style="{DynamicResource BarNavigation}"
+             xmlns:coco="clr-namespace:VentasGpo.Views.Templates"
+             xmlns:choco="clr-namespace:VentasGpo.Views.Menu.Actividades.Templates"
+             x:Class="VentasGpo.Views.Menu.Actividades.RTActivity">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout BackgroundColor="White">
+                <!-- BAR NAVIGATION -->
+                <coco:CustomTitleModal x:Name="TitleModal" />
+
+                <Grid>
+                    <ScrollView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="160" /> 
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Filtros fechas -->
+                            <StackLayout Grid.Row="0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="35" />
+                                        <RowDefinition Height="25" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="15"
+                                                    VerticalOptions="CenterAndExpand" Margin="0,0,0,-20">
+                                        <Label Text="{Binding Title}" Style="{StaticResource Title}" TextColor="{StaticResource ColorGreyDark}" />
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="0,-10,0,-20" VerticalOptions="Start" Padding="15">
+                                        <Label Text="{Binding LugarFirst}" />
+                                        <Label Text="{Binding LugarSecond}" Style="{StaticResource secondaryText}" VerticalTextAlignment="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" VerticalOptions="Start" Margin="0,-30,0,12" Padding="15">
+                                        <Label Text="{Binding LugarThird}" VerticalTextAlignment="Start" />
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3" Orientation="Horizontal" Margin="10,-10,10,0"
+                                                    HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                        <choco:FilterDate x:Name="FiltroDate" />
+                                    </StackLayout>
+
+                                </Grid>
+                            </StackLayout>
+
+                            <!-- Resumen y filtro place -->
+                            <StackLayout Grid.Row="1" VerticalOptions="StartAndExpand">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <!--<RowDefinition Height="2*" />-->
+                                        <RowDefinition Height="62" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="10,5,10,0"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="CenterAndExpand" >
+                                        <choco:FilterPlace x:Name="FiltroPlace" IsVisible="{Binding IsActividad}" Filtro="{Binding FilterButtons}" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" Orientation="Vertical" Padding="10" >
+                                        <Label Text="{Binding FechaActividad}" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+
+                            <!-- LIST Actividades -->
+                            <StackLayout Grid.Row="2">
+                                <Frame Padding="5" >
+                                    <ListView
+                                        BackgroundColor="White"
+                                        ItemsSource="{Binding ListaDetalles, Mode=TwoWay}"
+                                        HeightRequest="{Binding Height}"
+                                        ItemTapped="List_ItemTapped"
+                                        HasUnevenRows="True"
+                                        SeparatorVisibility="Default"
+                                        SeparatorColor="{StaticResource ColorGreyLight}"
+                                        SelectionMode="Single"                               
+                                        Margin="10, 6">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Grid Margin="12,3">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="8*" />
+                                                            <ColumnDefinition Width="2*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0">
+                                                            <Label Text="{Binding Descripcion, StringFormat='{0}: '}" HorizontalTextAlignment="Start" TextColor="{StaticResource ColorBlack}"/>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1" >
+                                                            <Label Text="{Binding PorcentajeTxt}" HorizontalTextAlignment="Center" TextColor="{Binding PorcentajeColor}"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Frame>
+                            </StackLayout>
+
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+            
+            <Frame x:Name="frame" Style="{DynamicResource Loading}" IsVisible="{Binding IsBusy}">
+                <Image x:Name="Flor" Source="flor1.png" Aspect="AspectFit" WidthRequest="5" HeightRequest="5" >
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="150" />
+                            <On Platform="iOS" Value="170" />
+                        </OnPlatform>
+                    </Image.Margin>
+                </Image>
+            </Frame>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Style="{DynamicResource BarNavigation}"
+             x:Class="VentasGpo.Views.Home.AboutDe">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="4*" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="1" HorizontalOptions="CenterAndExpand">
+                <Label Text="Operaciones Grupo Herdez" FontSize="18" Style="{StaticResource labelBold}" />
+                <Label x:Name="version" Style="{StaticResource secondaryText}" HorizontalTextAlignment="Center" />
+                <Label Text="MÉXICO" HorizontalTextAlignment="Center" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="3" HorizontalOptions="Center" Margin="40, 20">
+                <Label Text="Aplicación para uso exclusivo de personal capacitado." 
+                       Style="{StaticResource secondaryText}"
+                       HorizontalTextAlignment="Center" FontSize="16"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Style="{DynamicResource BarNavigation}"
+             x:Class="VentasGpo.Views.Home.Ayuda">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1" >
+                <Frame Style="{StaticResource MenuOptions}"
+                       BackgroundColor="{StaticResource ColorRed}"
+                       WidthRequest="100">
+                    <StackLayout Margin="-14" HorizontalOptions="FillAndExpand">
+                        <Image Source="ventas.png" Aspect="AspectFit" WidthRequest="50" HeightRequest="50" />
+                        <Label Text=" Ventas " LineBreakMode="TailTruncation" Style="{DynamicResource TitleMenu}" FontSize="14" />
+                    </StackLayout>
+                </Frame>
+
+                <Label VerticalOptions="Center" Text="Consulta las ventas realizadas en tiempo real." />
+            </StackLayout>
+            <BoxView Grid.Row="1" Grid.Column="1" Color="{StaticResource ColorGreyLight}" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+
+            <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="1" >
+                <Label VerticalOptions="Center" Text="Revisa las actividades realizadas por sucursales." />
+                <Frame Style="{StaticResource MenuOptions}"
+                       BackgroundColor="{StaticResource ColorRed}"
+                       WidthRequest="100">
+                    <StackLayout Margin="-14" HorizontalOptions="FillAndExpand">
+                        <Image Source="capa.png" Aspect="AspectFit" WidthRequest="50" HeightRequest="50" />
+                        <Label Text="Actividades" LineBreakMode="TailTruncation" Style="{DynamicResource TitleMenu}" FontSize="14" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <BoxView Grid.Row="2" Grid.Column="1" Color="{StaticResource ColorGreyLight}" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+
+            <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="1" >
+                <Frame Style="{StaticResource MenuOptions}"
+                       BackgroundColor="{StaticResource ColorRed}"
+                       WidthRequest="100">
+                    <StackLayout Margin="-14" HorizontalOptions="FillAndExpand">
+                        <Image Source="opera.png" Aspect="AspectFit" WidthRequest="50" HeightRequest="50" />
+                        <Label Text="Operaciones" LineBreakMode="TailTruncation" Style="{DynamicResource TitleMenu}" FontSize="14" />
+                    </StackLayout>
+                </Frame>
+
+                <Label VerticalOptions="Center" Text="Realiza diversas operaciones con el grupo." />
+            </StackLayout>
+            <BoxView Grid.Row="3" Grid.Column="1" Color="{StaticResource ColorGreyLight}" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
